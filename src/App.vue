@@ -1,15 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <button @click="show = !show">Menu</button>
+  <Transition name="fade">
+    <Menu v-show="show" />
+  </Transition>
+  <div>
+    <Modal />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Menu from "./components/Menu.vue";
+import Modal from "./components/Modal.vue";
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  components: { Menu, Modal },
+  data() {
+    return {
+      show: false,
+    };
   },
 };
 </script>
@@ -22,5 +30,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active,
+fade-enter-active {
+  transition: opacity 0.5s ease;
 }
 </style>
