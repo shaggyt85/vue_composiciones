@@ -6,13 +6,16 @@
   <div>
     <Modal />
   </div>
+  <div>{{ algo }}</div>
 </template>
 
 <script>
 import Menu from "./components/Menu.vue";
 import Modal from "./components/Modal.vue";
+import base from "@/mixins/base";
 export default {
   name: "App",
+  mixins: [base],
   components: { Menu, Modal },
   data() {
     return {
